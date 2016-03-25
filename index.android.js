@@ -15,9 +15,9 @@ import React, {
   BackAndroid,
 } from 'react-native';
 
+import Log from './Log'
 import MainScreenPage from './component/MainScreenPage';
-import MainListScreen from './component/MainListScreen';
-import NewsListPage from './component/NewsListPage';
+import NewsDetailsPage from './component/NewsDetailsPage';
 
 var _navigator;
 
@@ -43,26 +43,27 @@ class NewsRNAndroid extends React.Component{
 
   renderScene(router, navigator) {
     _navigator = navigator;
-    var Component = null;
 
-    switch(router.name){
-      case 'home':
-        Component = MainScreenPage;
-        break;
-      case 'newsDetails':
-        Component = NewsDetailsPage;
-      default:
-        Component = MainScreenPage;
+    if(router.name == 'home'){
+      return (
+        <View style={styles.navigator_style}>
+          <MainScreenPage {...router.params} navigator={navigator} />
+        </View>
+      );
+    }else if(router.name == 'news'){
+      return (
+        <View style={styles.navigator_style}>
+          <NewsDetailsPage
+            {...router.params}
+            navigator={navigator}
+            news={router.news} />
+        </View>
+      );
     }
-
-    return (
-      <View style={styles.navigator_style}>
-        <Component {...router.params} navigator={navigator} />
-      </View>
-    );
   }
 
   render() {
+    Log.log('yufujia');
     var initialRoute = {name: 'home'}
     return (
       <Navigator

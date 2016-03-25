@@ -10,7 +10,7 @@ import React, {
   ToolbarAndroid,
 } from 'react-native';
 
-import MainListScreen from './MainListScreen';
+import NewsListPage from './NewsListPage';
 import ThemeList from './ThemeList';
 
 var DRAWER_REF = 'DrawerLayout';
@@ -68,7 +68,7 @@ class MainScreenPage extends React.Component{
             actions={toolbarActions}
             onIconClicked={() => this.refs[DRAWER_REF].openDrawer()}
             onActionSelected={this.onActionSelected} />
-          <MainListScreen />
+          <NewsListPage theme={this.state.theme} navigator={this.props.navigator}/>
         </View>
       </DrawerLayoutAndroid>
     );
@@ -77,7 +77,7 @@ class MainScreenPage extends React.Component{
 
 const styles = StyleSheet.create({
   toolbar: {
-    backgroundColor: '#00a2ed',
+    backgroundColor: '#dc143c',
     height: 56,
   },
 });

@@ -48,16 +48,15 @@ class ThemeList extends React.Component{
 
   renderHeader = () => {
     return (
-      <View style={{flexDirection: column}}>
-        <Image style={styles.background_icon} source={NewsImageSource}>
-          <TouchableOpacity
-            onPress={() => this.props.onSelectItem(null)}
-            activeOpacity={0.5} >
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => this.props.onSelectItem(null)}>
-          </TouchableOpacity>
-        </Image>
+      <View style={{flexDirection: 'column'}}>
+        <Image style={{height: 150, width:300}} source={NewsImageSource}/>
+        <TouchableOpacity
+          onPress={() => this.props.onSelectItem(null)}>
+          <View style={styles.firstPageStyle}>
+            <Image source={require('../icons/home.png')} style={{height: 50, width: 50, marginLeft:10}}/>
+            <Text style={{fontSize: 25,justifyContent: 'center', marginLeft: 20}}>首页</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   };
@@ -97,6 +96,7 @@ const styles = StyleSheet.create({
   background_icon: {
     width: 300,
     height: 200,
+    // opacity: 0.5,
   },
   navigationListView: {
     height: 50,
@@ -104,13 +104,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingLeft: 20,
   },
+  firstPageStyle: {
+    flexDirection: 'row',
+    height:50,
+    width:300,
+    alignItems: 'center',
+    // justifyContent: 'center',
+    backgroundColor: '#ccc',
+  },
   listItem: {
+    fontSize: 20,
     marginLeft: 20,
-    fontStyle: 'italic',
+    fontStyle: 'normal',
   },
   listImage: {
-    width: 15,
-    height: 15,
+    width: 20,
+    height: 20,
     margin: 3,
     backgroundColor: '#aaaaaa'
   },
