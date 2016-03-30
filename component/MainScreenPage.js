@@ -15,7 +15,7 @@ import ThemeList from './ThemeList';
 
 var DRAWER_REF = 'DrawerLayout';
 var toolbarActions = [
-  {title: '提醒', icon: require('../icons/ic_message_white.png'), show: 'always'},
+  {title: '提醒', icon: require('image!ic_message_white'), show: 'always'},
   {title: '夜间模式', show: 'never'},
   {title: '设置选项', show: 'never'},
 ];
@@ -59,9 +59,9 @@ class MainScreenPage extends React.Component{
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
         renderNavigationView={this._navigationView}>
-        <View style={{flex: 1}}>
+        <View style={styles.container}>
           <ToolbarAndroid
-            navIcon={require('../icons/ic_menu_white.png')}
+            navIcon={require('image!ic_menu_white')}
             title={title}
             titleColor="white"
             style={styles.toolbar}
@@ -76,6 +76,11 @@ class MainScreenPage extends React.Component{
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#FAFAFA',
+  },
   toolbar: {
     backgroundColor: '#dc143c',
     height: 56,
@@ -83,12 +88,3 @@ const styles = StyleSheet.create({
 });
 
 module.exports = MainScreenPage;
-
-
-
-
-// <SwipeRefreshLayoutAndroid
-//   ref={(swipeRefreshLayout) => { this.swipeRefreshLayout = swipeRefreshLayout; }}
-//   onSwipeRefresh={this.onRefresh}>
-//   <MainListScreen />
-// </SwipeRefreshLayoutAndroid>

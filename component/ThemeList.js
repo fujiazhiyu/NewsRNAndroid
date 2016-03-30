@@ -48,13 +48,38 @@ class ThemeList extends React.Component{
 
   renderHeader = () => {
     return (
-      <View style={{flexDirection: 'column'}}>
-        <Image style={{height: 150, width:300}} source={NewsImageSource}/>
+      <View style={{flexDirection: 'column', backgroundColor: 'crimson'}}>
+        <View style={{flexDirection: 'column', height: 120}}>
+          <TouchableOpacity activeOpacity={0.7}>
+            <View style={styles.outterContainer}>
+              <Image source={require('image!default_head')}
+                style={{width: 50, height: 50, marginLeft: 30, margin :15, borderRadius: 25, borderWidth: 5}}/>
+              <Text style={styles.menuText}>请登录</Text>
+            </View>
+          </TouchableOpacity>
+          <View style={styles.outterContainer}>
+            <TouchableOpacity>
+              <View style={[styles.innerContainer,{marginRight: 20}]}>
+                <Image source={require('image!ic_favorites_white')}
+                  style={{width: 30, height: 30}}/>
+                <Text style={styles.menuText}>我的收藏</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View style={[styles.innerContainer, {marginLeft: 20}]}>
+                <Image source={require('image!ic_praise_white')}
+                  style={{width: 20, height: 20, marginTop: 3, marginRight: 5}}/>
+                <Text style={styles.menuText}>我赞过的</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
         <TouchableOpacity
-          onPress={() => this.props.onSelectItem(null)}>
+          onPress={() => this.props.onSelectItem(null)}
+          activeOpacity={0.8}>
           <View style={styles.firstPageStyle}>
-            <Image source={require('../icons/home.png')} style={{height: 50, width: 50, marginLeft:10}}/>
-            <Text style={{fontSize: 25,justifyContent: 'center', marginLeft: 20}}>首页</Text>
+            <Image source={require('image!home')} style={styles.firstPageImage}/>
+            <Text style={styles.firstPageText}>首页</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -62,25 +87,28 @@ class ThemeList extends React.Component{
   };
 
   renderRow = (theme: Object, sectionID: number | String, rowID: number | String) => {
-    var imageSource = require('../icons/ic_menu_white.png');
+    var imageSource = require('image!ic_menu_white');
     return(
       <View>
-      <TouchableOpacity
-        onPress={() => this.props.onSelectItem(theme)}
-        activeOpacity={0.5} >
-        <View
-          style={styles.navigationListView}>
-          <Image source = {imageSource} style={styles.listImage} />
-          <Text style={styles.listItem}>{theme.name}</Text>
-        </View>
-      </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.onSelectItem(theme)}
+          activeOpacity={0.8} >
+          <View style={styles.navigationListView}>
+            <View style={{height: 50, width: 50, backgroundColor: 'gainsboro', alignItems: 'center', justifyContent: 'center'}}>
+              <Image source = {imageSource} style={styles.listImage} />
+            </View>
+            <View >
+              <Text style={styles.listItem}>{theme.name}</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   };
 
   render() {
     return(
-      <View style={{flex: 1, backgroundColor: '#fff'}} {...this.props}>
+      <View style={{flex: 1, backgroundColor: 'white'}} {...this.props}>
         <ListView
           renderHeader = {this.renderHeader}
           dataSource = {this.state.dataSource}
@@ -93,16 +121,38 @@ class ThemeList extends React.Component{
 };
 
 const styles = StyleSheet.create({
-  background_icon: {
-    width: 300,
-    height: 200,
-    // opacity: 0.5,
+  firstPageImage: {
+    height: 50,
+    width: 50,
+    // marginLeft:10,
+  },
+  firstPageText: {
+    fontSize: 20,
+    justifyContent: 'center',
+    marginLeft: 40,
+    color: 'crimson',
+  },
+  menuText:{
+    fontSize: 16,
+    color: 'white',
+  },
+  innerContainer: {
+    flex:1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  outterContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   navigationListView: {
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 20,
+    backgroundColor: 'mintcream',
+    // paddingLeft: 20,
   },
   firstPageStyle: {
     flexDirection: 'row',
@@ -110,18 +160,18 @@ const styles = StyleSheet.create({
     width:300,
     alignItems: 'center',
     // justifyContent: 'center',
-    backgroundColor: '#ccc',
+    backgroundColor: 'white',
   },
   listItem: {
-    fontSize: 20,
-    marginLeft: 20,
+    fontSize: 18,
+    marginLeft: 40,
     fontStyle: 'normal',
   },
   listImage: {
-    width: 20,
-    height: 20,
+    width: 25,
+    height: 25,
     margin: 3,
-    backgroundColor: '#aaaaaa'
+    // backgroundColor: 'honeydew'
   },
 });
 

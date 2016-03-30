@@ -95,11 +95,11 @@ export default class NewsListPage extends React.Component{
     // return wordsLists;
   }
 
-  renderRow = (wordsList : Object, sectionID: number | String, rowID: number | String) => {
+  renderRow = (wordsListItem : Object, sectionID: number | String, rowID: number | String) => {
     return (
       <NewsItem
         onSelect={this.selectNews}
-        wordsList={wordsList}
+        wordsListItem={wordsListItem}
         />
     );
   };

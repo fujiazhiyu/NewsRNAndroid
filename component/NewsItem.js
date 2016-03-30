@@ -14,7 +14,7 @@ var TITLE_REF = 'title';
 export default class NewsItem extends React.Component {
   updateReadSate = () => {
     this.refs[TITLE_REF].setNativeProps({style: {color: '#777777'}});
-    this.props.onSelect(this.props.wordsList);
+    this.props.onSelect(this.props.wordsListItem);
   };
 
   render() {
@@ -23,17 +23,17 @@ export default class NewsItem extends React.Component {
         <TouchableOpacity
           onPress={this.updateReadSate}>
           <View style={styles.row}>
-            <Image source={{ uri: ImageAPI + this.props.wordsList.img }} style={styles.cellImage} />
+            <Image source={{ uri: ImageAPI + this.props.wordsListItem.img }} style={styles.cellImage} />
             <View>
               <Text
                 ref={TITLE_REF}
-                style={this.props.wordsList.read ? styles.newsKeywordsRead : styles.newsKeywords}>
-                {this.props.wordsList.keywords}
+                style={this.props.wordsListItem.read ? styles.newsKeywordsRead : styles.newsKeywords}>
+                {this.props.wordsListItem.keywords}
               </Text>
               <Text
                 style={styles.newsShort}
                 numberOfLines={2}>
-                {this.props.wordsList.title}
+                {this.props.wordsListItem.title}
               </Text>
               <View style={{height:1.5,  backgroundColor:'#222' }}></View>
             </View>
